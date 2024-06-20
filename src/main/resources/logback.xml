@@ -37,10 +37,10 @@
 
 
 	<!-- Appender for Catalina log -->
-	<appender name="CATALINA"
-			class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender 
+	    name="CATALINA"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${SERVER_LOG_PATH}/${CATALINA_LOG_FILE_NAME}.log</file>
-		
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>info</level>
 		</filter>
@@ -49,6 +49,7 @@
 			<pattern>${LOG_PATTERN}</pattern>
 
 		</encoder>
+		
 		<rollingPolicy
 			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- Daily rollover -->

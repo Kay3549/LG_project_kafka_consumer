@@ -1,14 +1,18 @@
 package consumer;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Date;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
-
+@Slf4j
 @RestController 
 public class Controller {
 	
@@ -41,5 +45,16 @@ public class Controller {
             return ResponseEntity.ok("ok");
         }
     }
+    
+    
+    @Scheduled(cron = "0 3 0 * * *") // 매일 12:03에 실행
+	public void startlogs() {
+		
+		Date today = new Date();
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
+		log.info("{}, consumer 로그 시작",dateFormat.format(today).toString());
+	
+	}
 
 }
